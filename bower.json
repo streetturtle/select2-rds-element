@@ -20,7 +20,8 @@
     "bootstrap": "^3.3.6",
     "paper-item": "PolymerElements/paper-item#^1.1.4",
     "select2": "^4.0.2",
-    "paper-card": "PolymerElements/paper-card#^1.1.1"
+    "paper-card": "PolymerElements/paper-card#^1.1.1",
+    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^1.0.14"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
