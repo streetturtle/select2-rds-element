@@ -1,0 +1,76 @@
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="select2-rds-element">
+  <style>
+    :host {
+      display: block;
+      box-sizing: border-box;
+    }
+  </style>
+
+  <template>
+    <select id="select2id" style="width: 20em"></select>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'select2-rds-element',
+    properties: {
+      placeholder: String,
+      selectedCity: {
+        type: String,
+        notify: true
+      }
+    },
+    ready: function() {
+      var placeholder = this.placeholder;
+      $(this.$["select2id"]).select2().on('change', function(e) {
+        this.parentElement.selectedCity = e.target.value;
+      });
+      // get element Polymer way and convert it to jquery object (http://stackoverflow.com/questions/29980103/polymer-and-jquery-selector)
+      $(this.$["select2id"]).select2({
+        id: function(address) {
+          return address.place_id;
+        },
+        placeholder: placeholder,
+        allowClear: true,
+        ajax: {
+          url: "http://maps.googleapis.com/maps/api/geocode/json",
+          dataType: 'json',
+          delay: 250,
+          data: function(params) {
+            return {
+              address: params.term // search term
+            };
+          },
+          processResults: function(data, params) {
+            for (i = 0; i < data.results.length; i++) {
+              data.results[i].id = data.results[i].place_id;
+            }
+            return {
+              results: data.results
+            }
+          },
+          cache: true
+        },
+        escapeMarkup: function(markup) {
+          return markup;
+        }, // let our custom formatter work
+        minimumInputLength: 1,
+        templateResult: function(address) {
+          if (address.loading) return address.text;
+          return "<div class='select2-result-label'><div class='suggest-container'>" +
+            address.formatted_address + "</div></div>";
+        },
+        templateSelection: function(address) {
+          return address.formatted_address ? address.formatted_address : address.text;
+        }
+      });
+    }
+  })
+</script>

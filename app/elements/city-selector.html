@@ -1,0 +1,21 @@
+<link rel="import" href="./select2-rds-element.html">
+
+<dom-module id="city-selector">
+
+  <template>
+    <h2>{{selectedCity}}</h2>
+    <select2-rds-element placeholder="Select city..." selected-city={{selectedCity}}></select2-rdf-element>
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+        is: 'city-selector',
+        properties: {
+          selectedCity: {
+            type: String
+          }
+        }
+      });
+</script>

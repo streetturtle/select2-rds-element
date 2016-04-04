@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>PDF element</title>
+
+  <script src="./bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="import" href="./bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="import" href="./bower_components/iron-ajax/iron-ajax.html">
+  <link rel="import" href="./bower_components/paper-button/paper-button.html">
+  <link rel="import" href="./bower_components/paper-styles/demo-pages.html">
+  <link rel="import" href="./bower_components/paper-card/paper-card.html">
+
+  <link rel="import" href="./elements/city-selector.html">
+
+</head>
+
+<body>
+  <h1>Select2 remote data source element</h1>
+
+  <div class="horizontal-section-container">
+    <template is="dom-bind" id="app">
+      <paper-card heading="Card Title">
+        <div class="card-content">Some content
+          <city-selector></city-selector>
+        </div>
+      </paper-card>
+
+
+    </template>
+  </div>
+</body>
+
+</html>
