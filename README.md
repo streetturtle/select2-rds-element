@@ -6,6 +6,8 @@ This project is created just to show how to implement such component. Since some
 
 ## Demo
 
+![screenshot](https://raw.githubusercontent.com/streetturtle/select2-rds-element/master/screenshot.png)
+
 To see how it works locally clone this repo and run the project:
 
 ```
